@@ -60,9 +60,8 @@ size_t int_vector_get_size(const intvector *v) { return v->size; }
 size_t int_vector_get_capacity(const intvector *v) { return v->capacity; }
 
 int int_vector_push_back(intvector *v, int item) {
-  size_t size = int_vector_get_size(v);
-  if (size < int_vector_get_capacity(v)) {
-    v->data[size] = item;
+  if (int_vector_get_size(v) < int_vector_get_capacity(v)) {
+    v->data[int_vector_get_size(v)] = item;
     v->size++;
   } else {
     v->capacity += 1;
@@ -71,10 +70,10 @@ int int_vector_push_back(intvector *v, int item) {
       free(v);
       return -1;
     }
-    v->data[size] = item;
+    v->data[int_vector_get_size(v)] = item;
     v->size++;
   }
-  if (v->data[size] == item)
+  if (v->data[int_vector_get_size(v)-1] == item)
     return 0;
   else
     return -1;

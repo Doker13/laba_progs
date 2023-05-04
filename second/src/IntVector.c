@@ -80,13 +80,7 @@ int int_vector_push_back(intvector *v, int item) {
 
 void int_vector_pop_back(intvector *v) {
   if (int_vector_get_size(v) != 0) {
-    for (int i = int_vector_get_capacity(v) - 1; i > 0; i--) {
-      if (v->data[i] > 0) {
-        v->data[i] = 0;
-        v->size--;
-        break;
-      }
-    }
+    v->data[int_vector_get_size(v)-1] = 0;
   }
 }
 
@@ -141,8 +135,5 @@ int int_vector_reserve(intvector *v, size_t new_capacity) {
     return -1;
   }
   v->capacity = new_capacity;
-  if (v->capacity == int_vector_get_capacity(v))
-    return 0;
-  else
-    return -1;
+  return 0;
 }

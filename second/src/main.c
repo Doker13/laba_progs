@@ -45,6 +45,14 @@ int main() {
   printf("Увеличиваем размер вектора t до 13:\n");
   int_vector_resize(t, 13);
   print_vector(t);
+  
+  printf("Уменьшаем ёмкость вектора t до 10:\n");
+  int_vector_reserve(t, 10);
+  print_vector(t);
+  
+  printf("Уменьшаем размер вектора t до 8:\n");
+  int_vector_resize(t, 8);
+  print_vector(t);
 
   printf("Уменьшаем ёмкость вектора t до его размера, после чего очищаем память для вектора t:\n");
   int_vector_shrink_to_fit(t);

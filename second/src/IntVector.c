@@ -102,9 +102,6 @@ int int_vector_shrink_to_fit(intvector *v) {
 int int_vector_resize(intvector *v, size_t new_size) {
   if (int_vector_get_size(v) < new_size &&
       new_size < int_vector_get_capacity(v)) {
-    for (int i = int_vector_get_size(v); i < new_size; i++) {
-      v->data[i] = 0;
-    }
     v->size = new_size;
   } else if (new_size < int_vector_get_size(v)) {
     for (int i = new_size; i < int_vector_get_size(v); i++) {

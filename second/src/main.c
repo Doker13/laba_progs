@@ -14,47 +14,47 @@ void print_vector(intvector *v) {
 
 int main() {
   intvector *v = int_vector_new(10);
-  printf("Создаём вектор v с ёмкостью 10:\n");
+  printf("Создаём массив v с ёмкостью 10:\n");
   print_vector(v);
   
   for (int i = 0; i < 10; i++) {
     int_vector_set_item(v, i, i);
   }
-  printf("Заполняем вектор v, размер теперь также равен 10:\n");
+  printf("Заполняем массив, размер массива теперь также равен 10:\n");
   print_vector(v);
   
   intvector *t = int_vector_copy(v);
   int_vector_free(v);
-  printf("Копируем вектор v в вектор t и освобождаем память для вектора v:\n");
+  printf("Создаём копию структуры v и освобождаем память для вектора v:\n");
   print_vector(t);
   
-  printf("Пятый элемент вектора t: %d\n\n", int_vector_get_item(t, 4));
+  printf("Пятый элемент массива: %d\n\n", int_vector_get_item(t, 4));
   
-  printf("Добавляем один элемент в конец заполненного вектора t:\n");
+  printf("Добавляем один элемент в конец заполненного массива:\n");
   int_vector_push_back(t, 10);
   print_vector(t);
   
-  printf("Удаляем последний элемент вектора t:\n");
+  printf("Удаляем последний элемент массива:\n");
   int_vector_pop_back(t);
   print_vector(t);
   
-  printf("Увеличиваем ёмкость вектора t до 15:\n");
-  int_vector_reserve(t, 15);
+  printf("Увеличиваем ёмкость до 14:\n");
+  int_vector_reserve(t, 14);
   print_vector(t);
   
-  printf("Увеличиваем размер вектора t до 13:\n");
-  int_vector_resize(t, 13);
+  printf("Увеличиваем размер до 12:\n");
+  int_vector_resize(t, 12);
   print_vector(t);
   
-  printf("Уменьшаем ёмкость вектора t до 10:\n");
+  printf("Уменьшаем ёмкость до 10:\n");
   int_vector_reserve(t, 10);
   print_vector(t);
   
-  printf("Уменьшаем размер вектора t до 8:\n");
+  printf("Уменьшаем размер до 8:\n");
   int_vector_resize(t, 8);
   print_vector(t);
 
-  printf("Уменьшаем ёмкость вектора t до его размера, после чего очищаем память для вектора t:\n");
+  printf("Уменьшаем ёмкость до размера, после чего очищаем память для структуры:\n");
   int_vector_shrink_to_fit(t);
   print_vector(t);
   

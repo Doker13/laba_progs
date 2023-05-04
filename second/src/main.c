@@ -20,7 +20,7 @@ int main() {
   for (int i = 0; i < 10; i++) {
     int_vector_set_item(v, i, i);
   }
-  printf("Заполняем массив, размер массива теперь также равен 10:\n");
+  printf("Заполняем массив, размер массива теперь также теперь равен 10:\n");
   print_vector(v);
   
   intvector *t = int_vector_copy(v);
@@ -53,9 +53,10 @@ int main() {
   printf("Уменьшаем размер до 8:\n");
   int_vector_resize(t, 8);
   print_vector(t);
-
+  
   printf("Уменьшаем ёмкость до размера, после чего очищаем память для структуры:\n");
   int_vector_shrink_to_fit(t);
+  int_vector_set_item(t, 4, 30);
   print_vector(t);
   
   int_vector_free(t);

@@ -45,9 +45,11 @@ int int_vector_get_item(const intvector *v, size_t index) {
 }
 
 void int_vector_set_item(intvector *v, size_t index, int item) {
-  if (int_vector_get_size(v) < int_vector_get_capacity(v)) {
+  if (int_vector_get_size(v) >= index) {
     v->data[index] = item;
-    v->size++;
+  } else if (int_vector_get_size(v) < index && int_vector_get_capacity(v) >= index) { 
+    v->data[index] = item;
+    v->size = index+1;
   } else {
     int_vector_push_back(v, item);
   }

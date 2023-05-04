@@ -81,8 +81,9 @@ int int_vector_push_back(intvector *v, int item) {
 }
 
 void int_vector_pop_back(intvector *v) {
-  if (int_vector_get_size(v) != 0) {
+  if (int_vector_get_size > 0){
     v->data[int_vector_get_size(v)-1] = 0;
+    v->size = int_vector_get_size(v)-1;
   }
 }
 

@@ -114,9 +114,6 @@ int int_vector_resize(intvector *v, size_t new_size) {
       free(v);
       return -1;
     }
-    for (int i = int_vector_get_capacity(v); i < new_size; i++) {
-      v->data[i] = 0;
-    }
     v->size = new_size;
   }
   if (int_vector_get_size(v) == new_size)

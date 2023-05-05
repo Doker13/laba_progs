@@ -47,9 +47,10 @@ int int_vector_get_item(const intvector *v, size_t index) {
 void int_vector_set_item(intvector *v, size_t index, int item) {
   if (int_vector_get_size(v) >= index) {
     v->data[index] = item;
-  } else if (int_vector_get_size(v) < index && int_vector_get_capacity(v) >= index) { 
+  } else if (int_vector_get_size(v) < index &&
+             int_vector_get_capacity(v) >= index) {
     v->data[index] = item;
-    v->size = index+1;
+    v->size = index + 1;
   } else {
     int_vector_push_back(v, item);
   }
@@ -64,7 +65,7 @@ int int_vector_push_back(intvector *v, int item) {
     v->data[int_vector_get_size(v)] = item;
     v->size++;
   } else {
-    v->capacity += 1;
+    v->capacity++;
     v->data = realloc(v->data, v->capacity * sizeof(int));
     if (!v->data) {
       free(v);
@@ -73,16 +74,16 @@ int int_vector_push_back(intvector *v, int item) {
     v->data[int_vector_get_size(v)] = item;
     v->size++;
   }
-  if (v->data[int_vector_get_size(v)-1] == item)
+  if (v->data[int_vector_get_size(v) - 1] == item)
     return 0;
   else
     return -1;
 }
 
 void int_vector_pop_back(intvector *v) {
-  if (int_vector_get_size > 0){
-    v->data[int_vector_get_size(v)-1] = 0;
-    v->size = int_vector_get_size(v)-1;
+  if (int_vector_get_size > 0) {
+    v->data[int_vector_get_size(v) - 1] = 0;
+    v->size = int_vector_get_size(v) - 1;
   }
 }
 
@@ -102,6 +103,9 @@ int int_vector_shrink_to_fit(intvector *v) {
 int int_vector_resize(intvector *v, size_t new_size) {
   if (int_vector_get_size(v) < new_size &&
       new_size < int_vector_get_capacity(v)) {
+    for (int i = int_vector_get_capacity(v); i < new_size; i++) {
+      v->data[i] = 0;
+    }
     v->size = new_size;
   } else if (new_size < int_vector_get_size(v)) {
     for (int i = new_size; i < int_vector_get_size(v); i++) {
@@ -113,6 +117,9 @@ int int_vector_resize(intvector *v, size_t new_size) {
     if (!v->data) {
       free(v);
       return -1;
+    }
+    for (int i = int_vector_get_capacity(v); i < new_size; i++) {
+      v->data[i] = 0;
     }
     v->size = new_size;
   }

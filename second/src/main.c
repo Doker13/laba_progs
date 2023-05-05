@@ -56,7 +56,6 @@ int main() {
   
   printf("Уменьшаем ёмкость до размера, после чего очищаем память для структуры:\n");
   int_vector_shrink_to_fit(t);
-  int_vector_set_item(t, 4, 30);
   print_vector(t);
   
   int_vector_free(t);

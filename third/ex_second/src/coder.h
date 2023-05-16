@@ -1,3 +1,5 @@
+#include <stdint.h>
+#include <stdio.h>
 #pragma once
 
 enum {

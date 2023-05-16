@@ -20,7 +20,7 @@ int main() {
   for (int i = 0; i < 10; i++) {
     int_vector_set_item(v, i, i);
   }
-  printf("Заполняем массив, размер массива теперь также теперь равен 10:\n");
+  printf("Заполняем массив, размер массива также теперь равен 10:\n");
   print_vector(v);
   
   intvector *t = int_vector_copy(v);

@@ -69,6 +69,8 @@ int check(char *c, char *unc) {
       count++;
     }
   }
+  fclose(comp);
+  fclose(uncomp);
   free(uncompCheck);
   free(compCheck);
   if (count == N) {

@@ -36,7 +36,7 @@ uint32_t decode_varint(const uint8_t** bufp)
 int main(){
     FILE *compresseds;
     compresseds = fopen("compressed.dat", "wb");
-    uint32_t value = 0x3333a;
+    uint32_t value = 0x76543;
     uint8_t buf[4];
     size_t size=0;
     uint8_t comressed[100];
